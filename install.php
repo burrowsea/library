@@ -23,3 +23,17 @@ author VARCHAR(50) NOT NULL,
 $stmt->execute();
 $stmt->closeCursor();
 echo("tblusers created");
+
+$stmt = $conn->prepare("DROP TABLE IF EXISTS tblloans;
+CREATE TABLE tblloans 
+(loanid INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+userid VARCHAR(6) NOT NULL,
+bookid VARCHAR(8) NOT NULL,
+isbn VARCHAR(13) NOT NULL,
+borrowdate VARCHAR(10) NOT NULL,
+duedate VARCHAR(10) NOT NULL,
+status VARCHAR(20) NOT NULL)"
+);
+$stmt->execute();
+$stmt->closeCursor();
+echo("tblloans created");
