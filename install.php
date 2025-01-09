@@ -15,9 +15,11 @@ echo("tblusers created");
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS tblbooks;
 CREATE TABLE tblbooks
-(bookid INT(14) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+(bookid INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+isbn INT(13) UNSIGNED NOT NULL
 title VARCHAR(100) NOT NULL,
 author VARCHAR(50) NOT NULL,
+dor VARCHAR(10) NOT NULL,
 )"
 );
 $stmt->execute();
