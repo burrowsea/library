@@ -19,7 +19,7 @@ CREATE TABLE tblbooks
 isbn INT(13) UNSIGNED NOT NULL
 title VARCHAR(100) NOT NULL,
 author VARCHAR(50) NOT NULL,
-dor VARCHAR(10) NOT NULL,
+dor VARCHAR(10) NOT NULL
 )"
 );
 $stmt->execute();
