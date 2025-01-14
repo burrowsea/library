@@ -12,11 +12,6 @@
     Password:<input type="passwd" name="passwd"><br>
     Date of Birth (xx/xx/xx):<input type="text" name="dob"><br>
     Email Address:<input type="text" name="email"><br>
-    <!--Creates a drop down list-->
-    Gender:<select name="gender">
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-        </select>
     <br>
     <!--Next 3 lines create a radio button which we can use to select the user role-->
     <input type="radio" name="role" value="User" checked> Pupil<br>
