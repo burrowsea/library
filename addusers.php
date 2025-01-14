@@ -26,7 +26,7 @@ if (
 
             $stmt->bindParam(':forename', $_POST["forename"]);
             $stmt->bindParam(':surname', $_POST["surname"]);
-			$stmt->bindParam(':password', password_hash($_POST["passwd"], PASSWORD_BCRYPT)); // Secure password hashing
+			$stmt->bindParam(':passwd', password_hash($_POST["passwd"], PASSWORD_BCRYPT)); // Secure password hashing
 			$stmt->bindParam(':dob', $_POST["dob"]);
             $stmt->bindParam(':email', $_POST["email"]);
             $stmt->bindParam(':gender', $_POST["gender"]);
