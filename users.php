@@ -13,7 +13,7 @@
     Date of Birth (xx/xx/xx):<input type="text" name="dob"><br>
     Email Address:<input type="text" name="email"><br>
     <!--Creates a drop down list-->
-    Gender:<select name="dob">
+    Gender:<select name="gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select>

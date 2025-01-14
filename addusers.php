@@ -3,17 +3,14 @@ include_once("connection.php");
 
 // Check if all expected POST keys exist to avoid undefined index errors
 if (
-    isset($_POST["forename"], $_POST["surname"], $_POST["house"], $_POST["year"], $_POST["passwd"], $_POST["gender"], $_POST["role"])
+    isset($_POST["forename"], $_POST["surname"], $_POST["passwd"], $_POST["dob"], $_POST["email"], $_POST["gender"], $_POST["role"])
 ) {
     array_map("htmlspecialchars", $_POST);
 
     // Map role to integer
     switch ($_POST["role"]) {
-        case "Pupil":
+        case "User":
             $role = 0;
-            break;
-        case "Teacher":
-            $role = 1;
             break;
         case "Admin":
             $role = 2;
@@ -24,14 +21,14 @@ if (
 
     if ($role !== null) {
         try {
-            $stmt = $conn->prepare("INSERT INTO tblusers (userid, gender, surname, forename, password, house, year, role)
-                VALUES (null, :gender, :surname, :forename, :password, :house, :year, :role)");
+            $stmt = $conn->prepare("INSERT INTO tblusers (userid, forename, surname, password, dob, email, gender, role)
+                VALUES (null, :forename, :surname, :password, :dob, :email, :gender, :role)");
 
             $stmt->bindParam(':forename', $_POST["forename"]);
             $stmt->bindParam(':surname', $_POST["surname"]);
-            $stmt->bindParam(':house', $_POST["house"]);
-            $stmt->bindParam(':year', $_POST["year"]);
-            $stmt->bindParam(':password', password_hash($_POST["passwd"], PASSWORD_BCRYPT)); // Secure password hashing
+			$stmt->bindParam(':password', password_hash($_POST["passwd"], PASSWORD_BCRYPT)); // Secure password hashing
+			$stmt->bindParam(':dob', $_POST["dob"]);
+            $stmt->bindParam(':email', $_POST["email"]);
             $stmt->bindParam(':gender', $_POST["gender"]);
             $stmt->bindParam(':role', $role);
 
