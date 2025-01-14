@@ -1,4 +1,16 @@
 <?php
+
+$servername = 'localhost';
+$username = 'root';
+$password= '';
+//note no Database mentioned here!!
+
+try {
+ $conn = new PDO("mysql:host=$servername", $username, $password);
+ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ $sql = "CREATE DATABASE IF NOT EXISTS library";
+ $conn->exec($sql);
+ 
 include_once("connection.php");
 $stmt = $conn->prepare("DROP TABLE IF EXISTS tblusers;
 CREATE TABLE tblusers 
@@ -39,3 +51,11 @@ status VARCHAR(20) NOT NULL)"
 $stmt->execute();
 $stmt->closeCursor();
 echo("tblloans created");
+
+}
+catch(PDOException $e)
+{
+    echo $sql . "<br>" . $e->getMessage();
+}
+$conn=Null;
+?>
