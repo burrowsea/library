@@ -14,7 +14,7 @@
     Email Address:<input type="text" name="email"><br>
     <br>
     <!--Next 3 lines create a radio button which we can use to select the user role-->
-    <input type="radio" name="role" value="User" checked> Pupil<br>
+    <input type="radio" name="role" value="User" checked> User<br>
     <input type="radio" name="role" value="Admin"> Admin<br>
     <input type="submit" value="Add User">
     </form>
