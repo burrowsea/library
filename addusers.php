@@ -3,7 +3,7 @@ include_once("connection.php");
 
 
 if (
-    isset($_POST["forename"], $_POST["surname"], $_POST["passwd"], $_POST["dob"], $_POST["email"], $_POST["role"])
+    isset($_POST["forename"], $_POST["surname"], $_POST["password"], $_POST["dob"], $_POST["email"], $_POST["role"])
 ) {
     array_map("htmlspecialchars", $_POST);
 
@@ -22,13 +22,13 @@ if (
     if ($role !== null) {
         //try {
 		print_r($_POST);
-			$pw = password_hash($_POST["passwd"], PASSWORD_BCRYPT); // Secure password hashing
+			$pw = password_hash($_POST["password"], PASSWORD_BCRYPT); // Secure password hashing
             $stmt = $conn->prepare("INSERT INTO tblusers (userid, forename, surname, password, dob, email, role)
-                VALUES (null, :forename, :surname, :passwd, :dob, :email, :role)");
+                VALUES (null, :forename, :surname, :password, :dob, :email, :role)");
 
             $stmt->bindParam(':forename', $_POST["forename"]);
             $stmt->bindParam(':surname', $_POST["surname"]);
-			$stmt->bindParam(':passwd', $pw);
+			$stmt->bindParam(':password', $pw);
 			$stmt->bindParam(':dob', $_POST["dob"]);
             $stmt->bindParam(':email', $_POST["email"]);
             $stmt->bindParam(':role', $role);
@@ -41,7 +41,7 @@ if (
        // } catch (PDOException $e) {
             
         //    error_log("Database error: " . $e->getMessage());
-            echo "An error occurred. Please try again later.";
+        //    echo "An error occurred. Please try again later.";
         //}
     } else {
         echo "Invalid role provided.";

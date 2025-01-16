@@ -9,7 +9,7 @@
     <form action="addusers.php" method="POST">
     First name:<input type="text" name="forename"><br>
     Last name:<input type="text" name="surname"><br>
-    Password:<input type="passwd" name="passwd"><br>
+    Password:<input type="passwd" name="password"><br>
     Date of Birth (xx/xx/xx):<input type="text" name="dob"><br>
     Email Address:<input type="text" name="email"><br>
     <br>
