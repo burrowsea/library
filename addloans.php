@@ -7,7 +7,7 @@ if (
 ) {
     array_map("htmlspecialchars", $_POST);
 
-    $borrowdate
+    $borrowdate = dat
     $duedate = date_add($_POST["borrowdate"], date_interval_create_from_date_string("14 days"));
 
     switch ($_POST["status"]) {
