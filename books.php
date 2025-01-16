@@ -6,27 +6,23 @@
     
 </head>
 <body>
-    <form action="addusers.php" method="POST">
-    First name:<input type="text" name="forename"><br>
-    Last name:<input type="text" name="surname"><br>
-    Password:<input type="password" name="passwd"><br>
-    Date of Birth:<input type="date" name="dob"><br>
-    Email Address:<input type="text" name="email"><br>
+    <form action="addbooks.php" method="POST">
+    title:<input type="text" name="title"><br>
+    isbn:<input type="text" name="isbn"><br>
+    Author:<input type="text" name="author"><br>
+    Date of Release:<input type="date" name="dor"><br>
     <br>
-    <!--Next 3 lines create a radio button which we can use to select the user role-->
-    <input type="radio" name="role" value="User" checked> Pupil<br>
-    <input type="radio" name="role" value="Admin"> Admin<br>
-    <input type="submit" value="Add User">
+    <input type="submit" value="Add Book">
     </form>
-    <h2>Current users</h2>
+    <h2>Current books</h2>
     <?php
     include_once("connection.php");
-    $stmt = $conn->prepare("SELECT * FROM tblusers");
+    $stmt = $conn->prepare("SELECT * FROM tblbooks");
     $stmt->execute();
     while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
         {
             #print_r($row);
-            echo($row["forename"]." ".$row["surname"]."<br>");
+            echo($row["title"]." by ".$row["author"]."<br>");
         }
 
     ?>
