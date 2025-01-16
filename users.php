@@ -9,8 +9,8 @@
     <form action="addusers.php" method="POST">
     First name:<input type="text" name="forename"><br>
     Last name:<input type="text" name="surname"><br>
-    Password:<input type="passwd" name="passwd"><br>
-    Date of Birth (xx/xx/xx):<input type="date" name="dob"><br>
+    Password:<input type="password" name="passwd"><br>
+    Date of Birth (xx/xx/xx):<input type="text" name="dob"><br>
     Email Address:<input type="text" name="email"><br>
     <br>
     <!--Next 3 lines create a radio button which we can use to select the user role-->
