@@ -13,7 +13,7 @@ if (
             $role = 0;
             break;
         case "Admin":
-            $role = 2;
+            $role = 1;
             break;
         default:
             $role = null;
