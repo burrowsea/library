@@ -1,14 +1,12 @@
 <?php
 include_once("connection.php");
 
-
 if (
     isset($_POST["userid"], $_POST["bookid"], $_POST["isbn"], $_POST["borrowdate"], $_POST["status"])
 ) {
     array_map("htmlspecialchars", $_POST);
-
-    $borrowdate = dat
-    $duedate = date_add($_POST["borrowdate"], date_interval_create_from_date_string("14 days"));
+    $borrow_date = date(strtotime($_POST["borrowdate"]));//date you get from database
+    $duedate = date_add($borrow_date, date_interval_create_from_date_string("14 days"));
 
     switch ($_POST["status"]) {
         case "On loan":
@@ -28,7 +26,7 @@ if (
             $stmt->bindParam(':userid', $_POST["userid"]);
             $stmt->bindParam(':bookid', $_POST["bookid"]);
 			$stmt->bindParam(':isbn', $_POST["isbn"]);
-            $stmt->bindParam(':borrowdate', $_POST["borrowdate"]);
+            $stmt->bindParam(':borrowdate', $borrow_date);
             $stmt->bindParam(':duedate', $duedate);
             $stmt->bindParam(':status', $status);
 
