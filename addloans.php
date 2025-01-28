@@ -21,7 +21,7 @@ if (
             $status = null;
     }
 
-    if ($status == 0 or $status == 1) {
+    if ($status !== null) {
         //try {
             $stmt = $conn->prepare("INSERT INTO tblloans (userid, bookid, isbn, borrowdate, duedate, status)
                 VALUES (:userid, :bookid, :isbn, :borrowdate, :duedate, :status)");
@@ -42,8 +42,8 @@ if (
         //    error_log("Database error: " . $e->getMessage());
          //   echo "An error occurred. Please try again later.";
         //}
-    }
-     else {
+    
+    } else {
         echo "Please select loan status.";
     }
 } else {
