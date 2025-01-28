@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-8">
-        <h1 class="text-4xl font-bold text-center mb-8">Library Management System</h1>
+        <h1 class="text-4xl font-bold text-center mb-8">Library</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <!-- Users Page -->
