@@ -14,7 +14,7 @@
     <br>
     <!--Next 3 lines create a radio button which we can use to select the loan status-->
     <input type="radio" name="status" value="On Loan" checked> On Loan<br>
-    <input type="radio" name="status" value="Retuned"> Returned<br>
+    <input type="radio" name="status" value="Returned"> Returned<br>
     <input type="submit" value="Add Loan">
     </form>
     <h2>Current loans</h2>
