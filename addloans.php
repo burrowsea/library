@@ -5,10 +5,14 @@ if (
     isset($_POST["userid"], $_POST["bookid"], $_POST["isbn"], $_POST["borrowdate"], $_POST["status"])
 ) {
     array_map("htmlspecialchars", $_POST);
-    
+
+$date = date_create($_POST["borrowdate"]);
+$duedate = date_add($date, date_interval_create_from_date_string("14 days"));
+$duedate_unix = strtotime($duedate);
+$duedate_string = date("Y-m-d", $duedate_unix)
 
     switch ($_POST["status"]) {
-        case "On loan":
+        case "On Loan":
             $status = 0;
             break;
         case "Returned":
@@ -17,16 +21,12 @@ if (
         default:
             $status = null;
     }
-
+    
 
 
     if ($status !== null) {
 
-        print_r($_POST);
-            $date = date_create($_POST["borrowdate"]);
-            $duedate = date_add($date, date_interval_create_from_date_string("14 days"));
-            $duedate_unix = strtotime($duedate);
-            $duedate_string = date("Y-m-d", $duedate_unix)
+       
             $stmt = $conn->prepare("INSERT INTO tblloans(userid, bookid, isbn, borrowdate, duedate, status)
                 VALUES (:userid, :bookid, :isbn, :borrowdate, :status)");
             
