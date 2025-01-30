@@ -7,11 +7,10 @@ if (
 ) {
     array_map("htmlspecialchars", $_POST);
 
-    $useridhash = hash("sha256",substr($_POST["surname"], 0, 5), substr($_POST["forename"], 0, 1));
-    $userid = hexdec(substr($useridhash, 0, 16));
-    echo($useridhash);
-    echo("''''''");
-    echo($userid);
+    $useridhash = hash("sha256",($_POST["surname"] . $_POST["forename"]));
+    $useridhash16 = hexdec(substr($useridhash, 0, 8));
+    $useridhash16 = str_pad($useridhash16, 6, '0', STR_PAD_LEFT);
+    $userid = substr($useridhash16, 0, 6);
     
     switch ($_POST["role"]) {
         case "User":
