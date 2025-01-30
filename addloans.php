@@ -6,10 +6,19 @@ if (
 ) {
     array_map("htmlspecialchars", $_POST);
 
-$date = date_create($_POST["borrowdate"]);
-$duedate = date_add($date, date_interval_create_from_date_string("14 days"));
-$duedate_unix = strtotime($duedate);
-$duedate_string = date("Y-m-d", $duedate_unix)
+print_r($_POST);
+$borrowdate = $_POST["borrowdate"]; // Assuming it's a valid date string
+
+// Create a DateTime object from the borrowdate
+$borrowdate_obj = new DateTime($borrowdate);
+
+// Add 14 days
+$borrowdate_obj->add(new DateInterval("P14D"));
+
+// Get the due date and format it to only show the date (Y-m-d)
+$duedate = $borrowdate_obj->format("Y-m-d");
+
+echo $duedate; // Display the due date
 
     switch ($_POST["status"]) {
         case "On Loan":
@@ -28,14 +37,14 @@ $duedate_string = date("Y-m-d", $duedate_unix)
 
        
             $stmt = $conn->prepare("INSERT INTO tblloans(userid, bookid, isbn, borrowdate, duedate, status)
-                VALUES (:userid, :bookid, :isbn, :borrowdate, :status)");
+                VALUES (:userid, :bookid, :isbn, :borrowdate, :duedate, :status)");
             
         //try {
             $stmt->bindParam(':userid', $_POST["userid"]);
             $stmt->bindParam(':bookid', $_POST["bookid"]);
 			$stmt->bindParam(':isbn', $_POST["isbn"]);
-            $stmt->bindParam(':borrowdate', $borrow_date);
-            $stmt->bindParam(':duedate', $duedate_string);
+            $stmt->bindParam(':borrowdate', $borrowdate);
+            $stmt->bindParam(':duedate', $duedate);
             $stmt->bindParam(':status', $status);
 
             $stmt->execute();
