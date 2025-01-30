@@ -7,6 +7,11 @@ if (
 ) {
     array_map("htmlspecialchars", $_POST);
 
+    $useridhash = hash("sha256",substr($_POST["surname"], 0, 5), substr($_POST["forename"], 0, 1));
+    $userid = hexdec(substr($useridhash, 0, 16));
+    echo($useridhash);
+    echo("''''''");
+    echo($userid);
     
     switch ($_POST["role"]) {
         case "User":
@@ -24,8 +29,9 @@ if (
 		print_r($_POST);
 			$pw = password_hash($_POST["passwd"], PASSWORD_BCRYPT); // Secure password hashing
             $stmt = $conn->prepare("INSERT INTO tblusers (userid, forename, surname, password, dob, email, role)
-                VALUES (null, :forename, :surname, :passwd, :dob, :email, :role)");
+                VALUES (:userid, :forename, :surname, :passwd, :dob, :email, :role)");
 
+            $stmt->bindParam(':userid', $userid);
             $stmt->bindParam(':forename', $_POST["forename"]);
             $stmt->bindParam(':surname', $_POST["surname"]);
 			$stmt->bindParam(':passwd', $pw);
