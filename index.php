@@ -26,7 +26,7 @@ $stmt = $conn->prepare("SELECT * FROM tblbooks");
     <div class="container mx-auto p-6">
         <h1 class="text-3xl font-bold text-center mb-6">Welcome to the Library</h1>
 
-        <!-- Login Form -->
+        
         <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-bold mb-4">Login</h2>
             <form action="login.php" method="POST">
@@ -36,11 +36,11 @@ $stmt = $conn->prepare("SELECT * FROM tblbooks");
             </form>
         </div>
 
-        <!-- Books List -->
+        
         <h2 class="text-2xl font-bold mt-8">Browse Books</h2>
         <div class="grid grid-cols-3 gap-4 mt-4">
             <?php
-            // Sample books data (Replace with database query)
+
             $books = [
                 ["title" => "The Great Gatsby", "author" => "F. Scott Fitzgerald"],
                 ["title" => "1984", "author" => "George Orwell"],
