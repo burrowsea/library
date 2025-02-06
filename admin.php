@@ -26,6 +26,11 @@
                 <h2 class="text-xl font-semibold mb-2">Manage Books</h2>
                 <p class="text-gray-600">Add, remove, or edit book records.</p>
             </a>
+
+    
+        </div>
+        <div class="mt-6 text-center">
+        <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded">Logout</a>
         </div>
     </div></body>
 </html> 
