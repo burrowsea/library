@@ -1,5 +1,15 @@
 <?php
 session_start();
+include_once("connection.php")
+
+$stmt = $conn->prepare("SELECT * FROM tblbooks");
+    $stmt->execute();
+    while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            #print_r($row);
+            echo($row["title"]." by ".$row["author"]."<br>");
+        }
+
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +19,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    
 </head>
 <body class="bg-gray-100">
 
