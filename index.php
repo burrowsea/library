@@ -23,6 +23,9 @@ session_start();
                 <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded mb-3">
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
             </form>
+            <div class="mt-6 text-center">
+        <a href="users.php" class="w-full bg-blue-500 text-white p-2 rounded">Sign Up</a>
+        </div>
         </div>
 
         
