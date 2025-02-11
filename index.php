@@ -1,15 +1,5 @@
 <?php
 session_start();
-include_once("connection.php")
-
-$stmt = $conn->prepare("SELECT * FROM tblbooks");
-    $stmt->execute();
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
-        {
-            #print_r($row);
-            echo($row["title"]." by ".$row["author"]."<br>");
-        }
-
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +30,15 @@ $stmt = $conn->prepare("SELECT * FROM tblbooks");
         <h2 class="text-2xl font-bold mt-8">Browse Books</h2>
         <div class="grid grid-cols-3 gap-4 mt-4">
             <?php
-
+            include_once("connection.php");
+            $stmt = $conn->prepare("SELECT * FROM tblbooks");
+            $stmt->execute();
+            while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+                {
+                    #print_r($row);
+                    echo($row["title"]." by ".$row["author"]."<br>");
+                }
+        
             $books = [
                 ["title" => "The Great Gatsby", "author" => "F. Scott Fitzgerald"],
                 ["title" => "1984", "author" => "George Orwell"],
