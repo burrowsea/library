@@ -41,10 +41,11 @@ include_once("connection.php")
             $stmt->execute();
             while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
                 {
-                    #print_r($row);
-                    $books = [
-                    "title" => $row["title"], "author" => $row["author"],
-                    ];
+                    
+                    echo "<div class='bg-white p-4 rounded shadow'>
+                        <h3 class='text-lg font-bold'>{$row['title']}</h3>
+                        <p class='text-gray-600'>by {$row['author']}</p>
+                    </div>";
                 }
         
 
@@ -53,12 +54,8 @@ include_once("connection.php")
                 ["title" => "1984", "author" => "George Orwell"],
                 ["title" => "To Kill a Mockingbird", "author" => "Harper Lee"]
             ];
-            foreach ($books as $book) {
-                echo "<div class='bg-white p-4 rounded shadow'>
-                        <h3 class='text-lg font-bold'>{$book['title']}</h3>
-                        <p class='text-gray-600'>by {$book['author']}</p>
-                    </div>";
-            }
+            
+            
             ?>
         </div>
     </div>
