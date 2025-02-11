@@ -25,7 +25,7 @@ if (
 
     if ($role !== null) {
         //try {
-		print_r($_POST);
+		print_r($_POST,"\n");
 			$pw = password_hash($_POST["passwd"], PASSWORD_BCRYPT); // Secure password hashing
             $stmt = $conn->prepare("INSERT INTO tblusers (userid, forename, surname, password, dob, email, role)
                 VALUES (:userid, :forename, :surname, :passwd, :dob, :email, :role)");
@@ -39,7 +39,10 @@ if (
             $stmt->bindParam(':role', $role);
 
             $stmt->execute();
-
+        
+        echo "User added"."</br>";
+        echo "Your User ID is: ",$userid."</br>";
+        echo "Remember this as there will be no reminders.";
             
          //   header('Location: users.php');
          //   exit();
