@@ -1,5 +1,9 @@
 <?php
 session_start();
+include_once("connection.php")
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,21 +28,26 @@ session_start();
                 <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded mb-3">
                 <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
             </form>
+            <div class="mt-6 text-center">
+        <a href="users.php" class="w-full bg-blue-500 text-white p-2 rounded">Sign Up</a>
+        </div>
         </div>
 
         
         <h2 class="text-2xl font-bold mt-8">Browse Books</h2>
         <div class="grid grid-cols-3 gap-4 mt-4">
             <?php
-            include_once("connection.php");
             $stmt = $conn->prepare("SELECT * FROM tblbooks");
             $stmt->execute();
             while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
                 {
                     #print_r($row);
-                    echo($row["title"]." by ".$row["author"]."<br>");
+                    $books = [
+                    "title" => $row["title"], "author" => $row["author"],
+                    ];
                 }
         
+
             $books = [
                 ["title" => "The Great Gatsby", "author" => "F. Scott Fitzgerald"],
                 ["title" => "1984", "author" => "George Orwell"],
@@ -56,3 +65,4 @@ session_start();
 
 </body>
 </html>
+
