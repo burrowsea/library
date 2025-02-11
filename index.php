@@ -2,13 +2,7 @@
 session_start();
 include_once("connection.php")
 
-$stmt = $conn->prepare("SELECT * FROM tblbooks");
-    $stmt->execute();
-    while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
-        {
-            #print_r($row);
-            echo($row["title"]." by ".$row["author"]."<br>");
-        }
+
 
 ?>
 
@@ -43,6 +37,16 @@ $stmt = $conn->prepare("SELECT * FROM tblbooks");
         <h2 class="text-2xl font-bold mt-8">Browse Books</h2>
         <div class="grid grid-cols-3 gap-4 mt-4">
             <?php
+            $stmt = $conn->prepare("SELECT * FROM tblbooks");
+            $stmt->execute();
+            while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+                {
+                    #print_r($row);
+                    $books = [
+                    "title" => $row["title"], "author" => $row["author"],
+                    ];
+                }
+        
 
             $books = [
                 ["title" => "The Great Gatsby", "author" => "F. Scott Fitzgerald"],
@@ -61,3 +65,4 @@ $stmt = $conn->prepare("SELECT * FROM tblbooks");
 
 </body>
 </html>
+
