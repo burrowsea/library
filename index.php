@@ -52,7 +52,8 @@ include_once("connection.php")
             ?>
         </div>
     </div>
-    <div class='bg-white p-4 rounded shadow'><img src="yaoming.jpg" alt="Yao Ming"><div>
+    
+    
 </body>
 </html>
 
